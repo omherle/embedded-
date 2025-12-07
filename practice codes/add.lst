@@ -1,0 +1,40 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             add , CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         START
+    4 00000000 E3A00001        MOV              R0,#1
+    5 00000004 E3A01004        MOV              R1,#4
+    6 00000008 E0802001        ADD              R2,R0,R1
+    7 0000000C                 END
+Command Line: --debug --xref --apcs=interwork --depend=.\add.d -o.\add.o -IC:\K
+eil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\Philips --predef
+ine="__EVAL SETA 1" --list=.\add.lst add.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+START 00000000
+
+Symbol: START
+   Definitions
+      At line 3 in file add.s
+   Uses
+      None
+Comment: START unused
+add 00000000
+
+Symbol: add
+   Definitions
+      At line 1 in file add.s
+   Uses
+      None
+Comment: add unused
+2 symbols
+333 symbols in table

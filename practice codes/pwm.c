@@ -1,0 +1,42 @@
+#include <LPC214X.H> 
+#define PLOCK 0x00000400 #define PWMPRESCALE 60 
+void initPWM(void); 
+int main(void) 
+{ 
+initPWM();  while(1) 
+{ 
+if(!((IO0PIN) & (1<<1))) // Check PO.1 
+{ 
+PWMMR1 = 1000; 
+PWMLER = (1<<1); 
+} 
+else if(!((IO0PIN) & (1<<2))) // Check P0.2 
+ { 
+PWMMR1 = 5000; 
+PWMLER = (1<<1); 
+} 
+else if(!((IO0PIN) & (1<<3))) // Check P0.3 
+{ 
+PWMMR1 = 10000; 
+PWMLER = (1<<1); 
+} 
+else if(!((IO0PIN) & (1<<4))) // Check P0.4 { 
+ { 
+PWMMR1 = 18000; 
+PWMLER = (1<<1); 
+} 
+} 
+} 
+void initPWM(void) 
+{ 
+PINSEL0 = (1<<1);  
+PWMPCR = 0x200; 
+//PWMPR = PWMPRESCALE-1; 
+PWMMR0 = 20000; 
+PWMMR1 = 10000;  
+PWMMCR = (1<<1); 
+PWMLER = (1<<1) | (1<<0); 
+PWMPCR = (1<<9);  
+PWMTCR = (1<<1);  
+PWMTCR = (1<<0) | (1<<3); 
+} 
